@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../styles/modules/button.module.scss';
+import { getClasses } from '../utils/getClasses';
 
 const buttonTypes = {
   primary: 'primary',
@@ -8,7 +9,13 @@ const buttonTypes = {
 
 function Button({ children, variant = 'primary' }) {
   return (
-    <button className={style.button} type="button">
+    <button
+      className={getClasses([
+        style.button,
+        style[`button--${buttonTypes[variant]}`],
+      ])}
+      type="button"
+    >
       {children}
     </button>
   );
